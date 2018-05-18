@@ -20,16 +20,6 @@ server.route({
   method: "POST",
   path: "/user/create",
   handler: user.createUser
-  // (request, response) => {
-  //   // var functionValue;
-  //    user.createUser(request.payload, function(err, data){
-  //      if(err){
-  //        console.log('Error');
-  //      }else{
-  //        return data;
-  //      }
-  //    })
-  // }
 });
 
 const init = async () => {
