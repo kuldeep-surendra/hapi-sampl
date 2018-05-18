@@ -19,32 +19,17 @@ server.route({
 server.route({
   method: "POST",
   path: "/user/create",
-  handler: (request, response) => {
-    // var functionValue;
-     user.createUser(request.payload, function(err, data){
-       console.log(data);
-       return data;
-     })
-
-
-    // return null;
-    //   if(err){
-    //     console.log('got error');
-    //   }else{
-    //     functionValue = success;
-    //   }
-    // });
-    // response.response(functionValue);
-    // var accountMock = {};
-    // if(request.params.username == 'Veer') {
-    //   accountMock = {
-    //     "username": "Ashish",
-    //     "age": 45,
-    //     "gender": "male"
-    //   }
-    // }
-    // return accountMock;
-  }
+  handler: user.createUser
+  // (request, response) => {
+  //   // var functionValue;
+  //    user.createUser(request.payload, function(err, data){
+  //      if(err){
+  //        console.log('Error');
+  //      }else{
+  //        return data;
+  //      }
+  //    })
+  // }
 });
 
 const init = async () => {

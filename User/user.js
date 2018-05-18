@@ -12,17 +12,37 @@ exports.userInfo = function(tableData){
   return accountMock;
 }
 
-exports.createUser = function(userParams, callback){
-  models.user.create({
-    email: userParams.email,
-    password: userParams.password,
-    phone: userParams.phone,
-    username: userParams.username
-  })
-  .then(() => {
-    callback(null, 'Success');
-  })
-  .catch(() => {
-    callback('Failed', null);
-  })
+// module.exports.createUser = (userParams, callback) => {
+//   models.user.create({
+//     email: userParams.email,
+//     password: userParams.password,
+//     phone: userParams.phone,
+//     username: userParams.username
+//   })
+//   .then(() => {
+//     callback(null, 'Success');
+//   })
+//   .catch(() => {
+//     callback('Failed', null);
+//   })
+// }
+
+exports.createUser = (req, h) => {
+
+  const userInfo = {
+    email: req.payload.email,
+    password: req.payload.password,
+    phone: req.payload.phone,
+    username: req.payload.username
+  };
+
+  return models.user.create(userInfo).then((userInfo) => {
+
+     return { message: "User created successfully", user: userInfo };
+
+  }).catch((err) => {
+
+    return { err: err };
+
+  });
 }
